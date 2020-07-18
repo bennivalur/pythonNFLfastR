@@ -55,6 +55,6 @@ columns = ['game_id','posteam','play_type','epa','temp','season']
 file_descr  = "temp"
 
 #creates datafile
-getD(1999, 2019, columns,file_descr)
+#getD(1999, 2019, columns,file_descr)
 
 
