@@ -1,2 +1,5 @@
 logos/
 temp/
+*.png
+*.gz
+*.csv
