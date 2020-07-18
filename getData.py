@@ -7,6 +7,12 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 def getImage(path): 
     return OffsetImage(plt.imread(path), zoom=.5)
 
+
+#Creates the datacollection needed while removing unneeded columns
+#year_from: number (1999-2019)
+#year_to: number (1999-2019)
+#columns: array -> what columns to keep example = ['game_id','posteam','play_type','epa','temp','season']
+#file_descr: string -> will create a folder with that name and save the datafile there
 def getD(year_from, year_to, columns, file_descr):
 
     print("Getting data and fields needed")
