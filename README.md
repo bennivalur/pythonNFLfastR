@@ -6,6 +6,9 @@ I would recommend taking a look at [Deryck97's nflfastR python guide][pythonguid
 
 And the twitter account of [nflfastR][twNFLFastR]
 
+## Tips
+- Most of the scripts will generate a folder for the files they create.  You might want to add those folders to the .gitignore to save yourself from uploading a bunch of images and csv files
+
 ## Files and functions
 
 ### getData.py
