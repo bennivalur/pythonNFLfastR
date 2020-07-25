@@ -11,9 +11,9 @@ def getImage(path):
 #Creates the datacollection needed while removing unneeded columns
 #year_from: number (1999-2019)
 #year_to: number (1999-2019)
-#columns: array -> what columns to keep example = ['game_id','posteam','play_type','epa','temp','season']
-#file_descr: string -> will create a folder with that name and save the datafile there
-def getD(year_from, year_to, columns, file_descr):
+#columns: array -> what columns to keep - example = ['game_id','posteam','play_type','epa','temp','season']
+#_directory: string -> will create a folder with that name and save the datafile there
+def getD(year_from, year_to, columns, _directory):
 
     print("Getting data and fields needed")
 
@@ -49,18 +49,14 @@ def getD(year_from, year_to, columns, file_descr):
     print("Reset Index")
     data.reset_index(drop=True, inplace=True)
 
+    
+
+    #Create directory if it does not exist
+    try: 
+        os.makedirs(_directory)
+    except OSError:
+        if not os.path.isdir(_directory):
+            raise
+
     print("Save to csv")
-    data.to_csv(file_descr + '/play_by_play_'+ year_from +'_to_'+ year_to +'.csv.gz', compression='gzip')
-
-
-
-year_low = 1998
-year_high = 2010
-
-columns = ['game_id','posteam','play_type','epa','temp','season']
-file_descr  = "temp"
-
-#creates datafile
-#getD(1999, 2019, columns,file_descr)
-
-
+    data.to_csv(_directory + '/play_by_play_'+ year_from +'_to_'+ year_to +'.csv.gz', compression='gzip')

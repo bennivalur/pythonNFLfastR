@@ -1,9 +1,5 @@
-logos/
-temp/
-old/
-passing_cold/
-passing_cold_v2/
 *.png
 *.gz
 *.csv
-notes.txt
+*.txt
+*_wip.py
