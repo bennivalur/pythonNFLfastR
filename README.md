@@ -14,30 +14,33 @@ I recommend taking a look at the following links
 ## Files and functions
 
 ### getData.py
-Contains one function helps create the csv data file with the data needed withouth all the unwanted columns. The function can be imported into any other python file like this
+Contains one function that helps create the csv data file with the data needed withouth all the unwanted columns. The function can be imported into any other python file like this.
 
 ```python
 from getData import getD
 ```
 
-It has takes 4 input parameters
+It takes 4 input parameters
 - year_from: number (1999-2019)
 - year_to: number (1999-2019)
 - columns: array -> what columns to keep - example = ['game_id','posteam','play_type','epa','temp','season']
 - _directory: string -> will create a folder with that name and save the datafile there
 
 ### trubisky.py
-Prop the reason you are here.  Creates the graph seen [here][benbaldwintweet] or [here][bigcattweet]
+Prop the reason you are here.  Creates the graph seen [here][benbaldwintweet] or [here][bigcattweet].  
+
 This plots QB performance when the temperature is exactly 66° fahrenheit when QBs have a minimum 30 attempted passes and mora than 1 rushing attempt.
 
-There is a method error in the script.  Since I grouped by name, the Carr brothers were grouped in to a single person.  The fix would be to group by id and name instead of just name.
+There is a method error in the script.  Since I grouped by name, the Carr brothers were grouped into a single person.  The fix would be to group by id and name instead of just name.
 
-Since this script is just ment to be funny, I decided not to fix it, but just acknowledge the error here
+Since this script is just ment to be funny, I decided not to fix it, but just acknowledge the error here.
 
-### pepsimaxXG
+### pepsimaxXG.py
 Plots the expected goals(xG) vs expected goals against(xGA) for the teams in the Icelandic Pepsi-Max league.
 
 You need to create a folder called 'pepsi_max_logos' with the logos of the teams.  The filenames should match the ones of the teams in the script.
+
+Still looking for good API for this.
 
 
 

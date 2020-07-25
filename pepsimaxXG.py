@@ -4,7 +4,6 @@ import os
 import urllib.request
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import numpy as np
-from getData import getD
 
 def getImage(path): 
     return OffsetImage(plt.imread(path), zoom=.5)
@@ -40,10 +39,6 @@ y = df['xg']
 
 fig, ax = plt.subplots(figsize=(10,10))
 
-#Fixed size of graph, good for making animations
-#ax.set_ylim([-0.35,0.40])
-#ax.set_xlim([-0.37,0.47])
-
 #Make a scatter plot first to get the points to place logos
 ax.scatter(x, y, s=.001)
 
@@ -66,6 +61,13 @@ ax.set_title('PEPSI MAX expected goals vs expected goals against', fontsize=20)
 plt.figtext(.81, .07, 'Data: footystats.org', fontsize=12)
 plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)), 
         color='darkorange', linestyle='--')
+
+#Create directory if it does not exist
+    try: 
+        os.makedirs('pepsi_graphs')
+    except OSError:
+        if not os.path.isdir('pepsi_graphs'):
+            raise
 
 #Save the figure as a png
 plt.savefig('pepsi_graphs/pepsiXGvsXGA.png', dpi=400)
