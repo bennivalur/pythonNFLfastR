@@ -27,9 +27,9 @@ It takes 4 input parameters
 - _directory: string -> will create a folder with that name and save the datafile there
 
 ### trubisky.py
-Prop the reason you are here.  Creates the graph seen [here][benbaldwintweet] or [here][bigcattweet].  
+Prop the reason you are here.  Creates the graph seen [here][benbaldwintweet] and [here][bigcattweet].  
 
-This plots QB performance when the temperature is exactly 66° fahrenheit when QBs have a minimum 30 attempted passes and mora than 1 rushing attempt.
+This plots QB performance when the temperature is exactly 66° fahrenheit when QBs have a minimum 30 attempted passes and more than 1 rushing attempt.
 
 There is a method error in the script.  Since I grouped by name, the Carr brothers were grouped into a single person.  The fix would be to group by id and name instead of just name.
 
