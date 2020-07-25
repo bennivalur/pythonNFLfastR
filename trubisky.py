@@ -7,7 +7,7 @@ import numpy as np
 from getData import getD
 
 #Hot vs cold passing
-def makegraph(year_from, year_to,_directory, temp):
+def makegraph(_directory, temp):
     data = pd.read_csv(_directory + '/play_by_play_1999_to_2019.csv.gz', compression='gzip', low_memory=False)
 
     min_attempts = 30
@@ -83,4 +83,4 @@ if(not os.path.exists(_directory + '/play_by_play_'+ str(year_from) +'_to_'+ str
     getD(year_from, year_to, _columns,_directory) 
 
 
-makegraph(year_from,year_to,_directory,temp)
+makegraph(_directory,temp)
