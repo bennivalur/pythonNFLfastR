@@ -47,7 +47,7 @@ def getD(year_from, year_to, columns, _directory):
         data = data.append(i_data, sort=True)
 
     print("Reset Index")
-    data.reset_index(drop=True, inplace=True)
+    #data.reset_index(drop=True, inplace=True)
 
     
 

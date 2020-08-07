@@ -38,6 +38,9 @@ def makegraph(_directory, temp):
     x = team_epa.qb_epa_run
     y = team_epa.qb_epa_pass
 
+    #Prob more appropriate for this type of graph
+    plt.xkcd()
+
     #Create a figure with size 15x15
     fig, ax = plt.subplots(figsize=(15,15))
 

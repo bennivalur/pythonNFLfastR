@@ -10,22 +10,28 @@ def getImage(path):
 
 teams = ['BREI','FH','FJO','FYL','GRO','HK','IA','KA','KR','STJA','VAL','VIKR']
 
-BREI = ['BREI',1.62,1.3]
-FH = ['FH',1.25,1.18]
-FJO = ['FJO',1.29,1.43]
-FYL = ['FYL',1.11,1.69]
-GRO = ['GRO',0.86,1.51]
-HK = ['HK',0.94,1.34]
-IA = ['IA',1.06,1.51]
-KA = ['KA',1.27,1.44]
-KR = ['KR',1.53,0.94]
-STJA = ['STJA',1.47,1.38]
-VAL = ['VAL',1.89,1.23]
-VIKR = ['VIKR',1.39,1.18]
+BREI = ['BREI',9,14,1.88,1.35]
+FH = ['FH',8,14,1.13,1.18]
+FJO = ['FJO',9,3,1.27,1.58]
+FYL = ['FYL',9,15,1.31,1.77]
+GRO = ['GRO',9,5,0.9,1.64]
+HK = ['HK',9,8,1.14,1.52]
+IA = ['IA',9,10,1.34,1.73]
+KA = ['KA',8,8,0.95,1.36]
+KR = ['KR',8,17,1.53,0.94]
+STJA = ['STJA',6,14,1.6,1.59]
+VAL = ['VAL',9,19,2.01,1.25]
+VIKR = ['VIKR',9,13,1.55,1.16]
 
 data = [BREI,FH,FJO,FYL,GRO,HK,IA,KA,KR,STJA,VAL]
 
-df = pd.DataFrame(data,columns=['club','xg','xga'])
+for i in data:
+    xGD = i[3] - i[4]
+    i.append(xGD)
+    avgPts = float(i[2]) / float(i[1])
+    i.append(avgPts)
+
+df = pd.DataFrame(data,columns=['club','games','points','xg','xga','xgd','avgPts'])
 
 logos = os.listdir(os.getcwd() + '/pepsi_max_logos')
 
@@ -34,8 +40,8 @@ logo_paths = []
 for i in logos:
     logo_paths.append(os.getcwd() + '/pepsi_max_logos/' + str(i))
 
-x = df['xga']
-y = df['xg']
+x = df['xgd']
+y = df['avgPts']
 
 fig, ax = plt.subplots(figsize=(10,10))
 
@@ -48,26 +54,26 @@ for x0, y0, path in zip(x, y, logo_paths):
     ax.add_artist(ab)
 
 #Adding labels and text
-ax.set_ylabel('Expected Goals', fontsize=16)
-ax.set_xlabel('Expected Goals Against', fontsize=16)
+ax.set_ylabel('Points Per Game', fontsize=16)
+ax.set_xlabel('Expected Goals Difference', fontsize=16)
 
 #Add a grid
 ax.grid(zorder=0,alpha=.4)
 ax.set_axisbelow(True)
 
-ax.invert_xaxis()
+#ax.invert_xaxis()
 
-ax.set_title('PEPSI MAX expected goals vs expected goals against', fontsize=20)
-plt.figtext(.81, .07, 'Data: footystats.org', fontsize=12)
+ax.set_title('PEPSI MAX Performance Vs. Results', fontsize=20)
+plt.figtext(.81, .07, 'Data: footystats.org | graph: @bennivaluR_', fontsize=12)
 plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)), 
         color='darkorange', linestyle='--')
 
 #Create directory if it does not exist
-    try: 
-        os.makedirs('pepsi_graphs')
-    except OSError:
-        if not os.path.isdir('pepsi_graphs'):
-            raise
+try: 
+    os.makedirs('pepsi_graphs')
+except OSError:
+    if not os.path.isdir('pepsi_graphs'):
+        raise
 
 #Save the figure as a png
 plt.savefig('pepsi_graphs/pepsiXGvsXGA.png', dpi=400)
