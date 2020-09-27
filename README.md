@@ -42,6 +42,13 @@ You need to create a folder called 'pepsi_max_logos' with the logos of the teams
 
 Still looking for good API for this.
 
+### weekly_qb_epa.py
+Plots the accumulated QB EPA through a game against the actual points scored.
+
+- Uncomment the getData line when running for the first time
+- Set week and team or
+- Uncomment line that runs the code for all teams for that week
+
 
 
 [pythonguide]: https://gist.github.com/Deryck97/dff8d33e9f841568201a2a0d5519ac5e
