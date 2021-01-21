@@ -13,6 +13,7 @@ def makegraph(_directory,team,week):
 
 
     data = data.loc[(data['posteam'] == team) & (data['week'] == week)& (data['qb_dropback'] == 1) ]
+    data = data.sort_values(by=['game_seconds_remaining'],ascending=False)
 
     last_row = data.iloc[-1]
     
@@ -102,7 +103,7 @@ getD(year_from, year_to, _columns,_directory)
 
 #setup(_directory,teams)
 
-week = 2
+week = 8
 team = 'CHI'
 
 #Make one graph for one team
